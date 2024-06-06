@@ -1,0 +1,76 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+{# Options #}
+{%  set menu = 6 %}
+
+
+{# Extend the base template #}
+{% extends 'base.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <form action="index.php" method="post" class="form-horizontal">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-list-alt"></i>
+                    <h3> SafeGuard Pro - Installation</h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <div class="alert alert-success">
+                        <i class="icon-ok-sign"> </i><strong>Installation Finished!</strong> The installation has been completed successfully.
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <i class="icon-warning-sign"> </i><strong>Attention!</strong> Please delete the install folder before you continue.
+                    </div>
+
+                    <div class="span12" style="text-align: center">
+                        <a href="http://gewora.net/newsletter" target="blank"><img src="img/Newsletter.png"></a>
+                        <a href="http://codecanyon.net/downloads" target="blank"><img src="img/RateUs.png"></a>
+                        <img src="img/Line.PNG" style="max-width: 80%;">
+                    </div>
+
+                    <div class="span12" style="text-align: center">
+                        <a href="http://facebook.com/Gewora" target="blank"><img src="img/FollowUsFacebook.png" style="padding-top: 18px;"></a>
+                        <a href="http://twitter.com/Gewora" target="blank"><img src="img/FollowUsTwitter.png" style="padding-top: 18px;"></a>
+                    </div>
+
+                    <div class="span12" style="text-align: center">
+                        <a href="http://github.com/Gewora" target="blank"><img src="img/FollowUsGithub.png" style="padding-top: 15px;"></a>
+                        <a href="http://youtube.com/Gewora" target="blank"><img src="img/FollowUsYoutube.png" style="padding-top: 15px;"></a>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input type="hidden" name="action" value="ban_ip">
+                    <div style="text-align: right; float: right">
+                        <input type="button" class="btn btn-primary" value="Finish Installation" onclick="location.href='../login.php';">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

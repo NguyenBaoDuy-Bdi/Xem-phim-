@@ -1,0 +1,88 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Options #}
+{%  set menu = 3 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <div class="widget">
+            <div class="widget-header"> <i class="icon-user"></i>
+                <h3> Accounts</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+                <div class="tabbable">
+                    <form class="form-horizontal" action="settings_accounts.php" method="post">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#project_honeypot" data-toggle="tab">Project Honeypot</a></li>
+                            <li><a href="#cloudflare" data-toggle="tab">Cloudflare</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="project_honeypot">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">API Key</label>
+                                        <div class="controls">
+                                            <input type="text" class="span4" name="project_honeypot_api_key" value="{{ config.project_honeypot_api_key }}">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="cloudflare">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">API Key</label>
+                                        <div class="controls">
+                                            <input type="text" class="span4" name="cloudflare_api_key" value="{{ config.cloudflare_api_key }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">E-Mail</label>
+                                        <div class="controls">
+                                            <input type="text" class="span4" name="cloudflare_email" value="{{ config.cloudflare_email }}">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <input type="hidden" name="update">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

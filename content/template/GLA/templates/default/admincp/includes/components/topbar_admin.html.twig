@@ -1,0 +1,69 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+<div id="header">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="dashboard.php">Gewora - SafeGuard Pro</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{ session.gewora_safe_guard.username }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="edit_profile.php">Profile</a></li>
+                                <li><a href="../logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="subnavbar">
+        <div class="subnavbar-inner">
+            <div class="container">
+                <ul class="mainnav">
+                    <li {% if menu == 1 %}class="active"{% endif %}><a href="dashboard.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                    <li class="dropdown {% if menu == 2 %}active{% endif %}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Logs</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="log.php?type=proxy">Proxy/VPN</a></li>
+                            <li><a href="log.php?type=spammer">Spammer</a></li>
+                            <li><a href="log.php?type=mass_requests">Mass requests</a></li>
+                            <li><a href="log.php?type=sql_injection">SQL Injections</a></li>
+                            <li><a href="log.php?type=xss_attack">XSS Attacks</a></li>
+                        </ul>
+                    </li>
+
+                    <li {% if menu == 4 %}class="active"{% endif %}><a href="ban.php"> <i class="icon-lock"></i><span>Bans</span> <b class="caret"></b></a></li>
+
+                    <li {% if menu == 6 %}class="active"{% endif %}><a href="security_check.php"><i class="icon-eye-open"></i><span>Security Check</span> </a> </li>
+
+                    <li {% if menu == 5 %}class="active"{% endif %}><a href="tools.php"><i class="icon-tasks"></i><span>Tools</span> </a> </li>
+
+                    <li class="dropdown {% if menu == 3 %}active{% endif %}"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-cog"></i><span>Settings</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="settings_protection.php">Protection</a></li>
+                            <li><a href="settings_accounts.php">Accounts</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

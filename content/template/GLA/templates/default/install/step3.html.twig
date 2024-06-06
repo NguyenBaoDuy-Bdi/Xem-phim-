@@ -1,0 +1,89 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+{# Options #}
+{%  set menu = 3 %}
+
+
+{# Extend the base template #}
+{% extends 'base.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+
+        <div class="alert alert-info">
+            <i class="icon-warning-sign"></i> <strong>Attention!</strong> You can't edit the database settings directly. If you need to adjust them, you have to to it in the <strong>includes/config.inc.php</strong> file.
+        </div>
+        <form action="index.php" method="post" class="form-horizontal">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-eye-open"></i>
+                    <h3> Database Details</h3>
+                </div>
+                <div class="widget-content">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">Host</label>
+                            <div class="controls">
+                                <input type="text" class="span3" disabled value="{{ config.database.host }}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Database</label>
+                            <div class="controls">
+                                <input type="text" class="span3" disabled value="{{ config.database.database }}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Username</label>
+                            <div class="controls">
+                                <input type="text" class="span3" disabled value="{{ config.database.user }}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Password</label>
+                            <div class="controls">
+                                <input type="password" class="span3" disabled value="{{ config.database.password }}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Prefix</label>
+                            <div class="controls">
+                                <input type="text" class="span3" disabled value="{{ config.database.prefix }}">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                {% if data.status != 'Error' %}
+                    <div class="form-actions">
+                        <div style="text-align: right; float: right">
+                            <button type="submit" name="continueToStep4" class="btn btn-primary">Next Step</button>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

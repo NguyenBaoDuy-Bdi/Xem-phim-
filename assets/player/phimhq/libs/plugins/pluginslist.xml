@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pluginlist loading="HAYPHIMHD Loading Please wait...">
+    <plugins url="gkplugins_picasaweb.swf"/>
+    <plugins url="gkplugins_youtube.swf"/>
+    <plugins url="gkplugins_plusgoogle.swf"/>
+    <plugins url="gkplugins_zingvn.swf"/>
+    <plugins url="gkplugins_clipvn.swf"/>
+    <plugins url="gkplugins_dailymotion.swf"/>
+    <plugins url="gkplugins_playfptvn.swf"/>
+    <plugins url="gkplugins_nhaccuatui.swf"/>
+    <plugins url="gkplugins_goodvideohost.swf"/>
+	<plugins url="gkplugins_docsgoogle.swf"/>
+	<plugins url="gkplugins_livedrive.swf"/>
+	<plugins url="gkplugins_fsharevn.swf"/>
+	<plugins url="gkplugins_zippyshare.swf"/>
+</pluginlist>

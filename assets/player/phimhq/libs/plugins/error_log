@@ -1,0 +1,15 @@
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iheader in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 10
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: ireferer in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 12
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iautoreferer in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 13
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: icustheader in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 15
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: icookie in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 16
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iencoding in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 17
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: itimeout in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 18
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: ifollow in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 19
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: ipost in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 20
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: ipostfield in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 21
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iproxytunnel in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 22
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iproxytype in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 23
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iproxyport in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 24
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: iproxyip in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 25
+[11-Jan-2016 10:44:21 UTC] PHP Notice:  Undefined index: inobody in /home/hayphimh/public_html/content/template/player/phimhq/libs/plugins/plugins_player.php on line 27

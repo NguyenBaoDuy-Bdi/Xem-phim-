@@ -1,0 +1,46 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.php">Gewora - SafeGuard </a>
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li><a href="#" class="dropdown-toggle"><i class="icon-shopping-cart"></i> Purchase this script</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->
+<div class="subnavbar">
+    <div class="subnavbar-inner">
+        <div class="container">
+            <ul class="mainnav">
+                <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                <li><a href="{% if session.gewora_safe_guard.loggedIn %}admincp/dashboard.php{% else %}login.php{% endif %}"><i class="icon-user"></i><span>Admin</span> </a> </li>
+            </ul>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /subnavbar-inner -->
+</div>

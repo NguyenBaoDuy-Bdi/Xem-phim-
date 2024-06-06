@@ -1,0 +1,65 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+{# Options #}
+{%  set menu = 1 %}
+
+
+{# Extend the base template #}
+{% extends 'base.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <form action="index.php" method="post" class="form-horizontal">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-list-alt"></i>
+                    <h3> SafeGuard Pro - Installation</h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <div class="alert alert-info">
+                        <strong>Welcome to the SafeGuard Pro Installation!</strong> This setup wizard will guide you through the setup process.
+                    </div>
+
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">Purchase Code</label>
+                            <div class="controls">
+                                <input type="text" class="span5" name="purchase_code">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="form-actions">
+                    <input type="hidden" name="action" value="ban_ip">
+                    <div style="text-align: right; float: right">
+                        <button type="submit" name="continueToStep2" class="btn btn-primary">Next Step</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

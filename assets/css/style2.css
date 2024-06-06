@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/*   
+Theme Name: Bilutv
+Theme URI: http://havq.net
+Description: Nothing is impossible!
+Author: H-Design
+Author URI: http://hoangha.us
+Version: 1.2.0
+*/
+body {
+  color: #000;
+  font-size: 12px;
+  line-height: 1.5em;
+  background: url(images/burried.png) fixed center;
+}
+.iframe > iframe{
+    width: 100% !important
+}
+
+/*------------------
+Css Fixed by hoangha.mmo@gmail.com
+Website: http://havq.net
+------------------*/
+
+.col-lg-12.box {
+    border: 1px solid #222;
+    background-color: rgb(24, 24, 24)!important;
+}
+
+
+.list_carousel .prev, .list_carousel .next {
+    top: 100px;
+    position: absolute;
+    padding: 30px 10px;
+    background: rgba(247, 9, 9, 0.72)!important;
+}
+.movie-carousel-top-item-meta {
+    position: absolute;
+    bottom: 2px;
+    background: rgba(0, 0, 0, 0.87);
+    padding: 8px 15px 8px 20px!important;
+    width: 100%;
+}
+.movie-carousel-top-item{
+		width: 227px!important;
+		height: 300px;
+		position: relative;
+	}
+.movie-carousel-top-item .ribbon {
+    position: absolute;
+    color: #fff;
+    background: rgb(150, 21, 21)!important;
+    font-size: 11px;
+    font-weight: bold;
+    float: left!important;
+    clear: both;
+    padding: 4px;
+    right: 0!important;
+    padding-left: 30px;
+    white-space: nowrap;
+    display: inline-block;
+}
+.first-item .ribbon {
+     background: rgb(150, 21, 21)!important;
+}
+.ribbon {
+    background: rgb(146, 20, 20)!important;
+
+}
+.header-list-index .title-list-index {
+    color: #E2C728!important;
+}
+.right-box .right-box-header span {
+    display: block;
+    padding: 9px;
+    background: #222;
+    color: #E2C728;
+}
+strong.breadcrumb_last {
+    color: #908D8D!important;
+}
+.breadcrumb {
+    color: #ADA8A8!important;
+}
+.h2-note {
+margin: 10px 0 -15px 0;border: 1px solid #B8B612;
+background: #000; font-family: 'PT Sans', sans-serif; font-size:16px
+}
+.list-top-movie-item-view {
+    float: left!important;
+}
+#sidebar .home-box-widget {
+    float: left;
+    margin-right: 15px!important;
+    width: 300px;
+}
+#tabs-movie .tab-content .movie {
+    border-bottom: 1px dashed #555;
+    padding: 13.444px 0px!important;
+    font-size: 12px;
+    list-style: none;
+}

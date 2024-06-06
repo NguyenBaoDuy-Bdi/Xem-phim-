@@ -1,0 +1,73 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Options #}
+{%  set menu = 3 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <div class="widget">
+            <div class="widget-header"> <i class="icon-user"></i>
+                <h3> Account Settings</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+                <div class="tabbable">
+                    <form class="form-horizontal" action="edit_profile.php" method="post">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#general" data-toggle="tab">General</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="general">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Username</label>
+                                        <div class="controls">
+                                            <input type="text" class="span6" name="username" value="{{ session.gewora_safe_guard.username }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Password</label>
+                                        <div class="controls">
+                                            <input type="password" class="span6" name="password1" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-actions">
+                                        <input type="hidden" name="update">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

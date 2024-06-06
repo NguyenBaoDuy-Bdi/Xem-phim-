@@ -1,0 +1,110 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Options #}
+{%  set menu = 5 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <div class="widget">
+            <div class="widget-header"> <i class="icon-tasks"></i>
+                <h3> Tools</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+                <div class="tabbable">
+                    <form class="form-horizontal" action="tools.php" method="post">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#hashing" data-toggle="tab">Hashing</a></li>
+                            <li><a href="#password_generator" data-toggle="tab">Password Generator</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="hashing">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">String</label>
+                                        <div class="controls">
+                                            <input type="text" class="span4" name="hash_string" value="{{ data.hashed }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Algorithm</label>
+                                        <div class="controls">
+                                            <select name="hash_algorithm">
+                                                <option value="whirlpool">Whirlpool</option>
+                                                <option value="sha512">SHA 512</option>
+                                                <option value="sha256">SHA 256</option>
+                                                <option value="md5">MD5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Iterations</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="hash_iterations" value="1">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-actions">
+                                        <button type="submit" name="hash" class="btn btn-primary">Hash</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="password_generator">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Length</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="password_length" value="8">
+                                        </div>
+                                    </div>
+
+                                    {% if data.password %}
+                                        <div class="control-group">
+                                            <label class="control-label">Password</label>
+                                            <div class="controls">
+                                                <input type="text" class="span4" value="{{ data.password }}">
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+
+                                    <br />
+                                    <div class="form-actions">
+                                        <button type="submit" name="generate_password" class="btn btn-primary">Generate Password</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <input type="hidden" name="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

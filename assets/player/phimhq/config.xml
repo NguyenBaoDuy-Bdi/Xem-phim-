@@ -1,0 +1,18 @@
+<config>
+	<repeat>false</repeat>
+	<autostart>true</autostart>
+	<volume>100</volume>
+	<dock>true</dock>
+	<aspectratio>16:9</aspectratio>
+	<wmode>opaque</wmode>
+	<stretching>fill</stretching>
+	<controlbar>over</controlbar>
+	<menucolor>#FFCC00</menucolor>
+	<logo.hide>false</logo.hide>
+	<logo.file>http://4.bp.blogspot.com/-do3qCGSDuoA/VYodu3w_i9I/AAAAAAAAASo/NEweLOYeA4c/s1600/logo%2B%25281%2529.png</logo.file>
+	<logo.link>http://hayphimhd.com</logo.link>
+	<logo.position>left</logo.position>
+	<skin>http://hayphimhd.com/players/hdo/hdonline-2.1.xml</skin>
+	<wdsplugins.license>6a74664b6c4a366b6d4a79496c4661566d324e30556e524d6f4a324d78654b676e4a71686b59685068395057724c435a6c614b5569593352305a537772575664574664556d4a316e61474e6b5756513d</wdsplugins.license>
+	<plugins>http://hayphimhd.com/player/phimhq/libs/plugins/wdsplugins.swf,http://hayphimhd.com/player/phimhq/tool/sharing.swf,http://hayphimhd.com/player/captions.swf</plugins>
+</config>

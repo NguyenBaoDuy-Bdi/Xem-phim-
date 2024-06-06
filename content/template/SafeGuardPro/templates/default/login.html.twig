@@ -1,0 +1,65 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Extend the base template#}
+{% extends 'base_login.html.twig' %}
+
+{# Load some site specific css files #}
+{% block head %}
+    <link href="./templates/{{ template_name }}/includes/data/css/pages/signin.css" rel="stylesheet">
+{% endblock %}
+
+{# The content #}
+{% block content %}
+    <div class="account-container">
+        <div class="content clearfix">
+            <form action="login.php" method="post">
+                <h1>Member Login</h1>
+                <div class="login-fields">
+                    {% if msg %}
+                        {{ msg.display }}
+                    {%  endif %}
+                    <p>Please provide your details</p>
+
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" class="login username-field" required/>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Password" class="login password-field" required/>
+                    </div>
+                </div>
+
+                <div class="login-actions">
+                    <input type="hidden" name="login">
+                    <button class="button btn btn-success btn-large">Sign In</button>
+                </div>
+            </form>
+
+        </div> <!-- /content -->
+
+    </div> <!-- /account-container -->
+{% endblock %}
+
+{% block foot %}
+    <script src="./templates/{{ template_name }}/includes/data/js/jquery-1.7.2.min.js"></script>
+    <script src="./templates/{{ template_name }}/includes/data/js/bootstrap.js"></script>
+{% endblock %}

@@ -1,0 +1,2 @@
+<?php
+function _autoCleanXSS(){$varGlobal = array(&$_GET,&$_POST,&$_COOKIE);while ((list($k, $v) = each($varGlobal)) !== false)foreach ($v as $key => $value){if (!is_array($value)){$varGlobal[$k][$key] = stripslashes($value);continue;}$varGlobal[] = &$varGlobal[$k][$key];}unset($varGlobal);if (!empty($_FILES))foreach ($_FILES as $key => $value){$_FILES[$key]['name'] = stripslashes((string) $value['name']);}}?>

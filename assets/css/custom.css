@@ -1,0 +1,17 @@
+.error-block{display:none;color:red;}
+.jw-skin-seven .jw-overlay .jw-playlist-container{width:400px;left:-20%;}
+.jwplayer .jw-playlist{height:250px;}
+.jwplayer .jw-playlist .jw-option{padding:0 15px;margin:auto;text-align:left;}
+.jw-playlist .jw-name{width:30em !important;}
+#content-embed iframe{width:100% !important;height:500px !important;}
+.bp-btn-like.active i{color:#79C142;}
+.qtip{max-width:320px;}
+.qtip .qtip-content{font-size:12px;padding:12px;overflow:visible}
+.qtip .qtip-content .f-desc{line-height:1.3em !important;font-size:12px !important;}
+.qtip .qtip-title{margin-right:60px;background:#fff;color:#71B43E;font-size:16px;font-weight:600;padding:10px 12px;line-height:normal;}
+.qtip .qtip-titlebar{background:none !important;padding:0 !important;}
+.jtip-quality{top:-30px;right:12px;}
+#media-player{position:relative;}
+.loading-film{position:absolute;top:0;right:0;bottom:0;left:50%;color:#fff;width:200px;text-align:center;height:180px;margin-left:-100px;top:50%;margin-top:-90px;}
+.content-kus{ overflow: hidden;}
+.content-kus div{ margin: 0 auto !important;}

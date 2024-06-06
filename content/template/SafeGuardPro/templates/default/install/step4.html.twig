@@ -1,0 +1,57 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+{# Options #}
+{%  set menu = 4 %}
+
+
+{# Extend the base template #}
+{% extends 'base.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+
+
+        {% if data.status == 'alreadyExist' %}
+            <div class="alert alert-error">
+                <i class="icon-warning-sign"></i> <strong>Error!</strong> Tables with the same prefix do already exist. Please delete them or choose another database.
+            </div>
+        {% elseif data.status == 'success' %}
+            <div class="alert alert-success">
+                <i class="icon-ok-sign"></i> <strong>Tables created!</strong> The tables have been created. Please continue with the installation.
+            </div>
+        {% endif %}
+
+        <form action="index.php" method="post" class="form-horizontal">
+            {% if data.status == 'success' %}
+                <div class="form-actions">
+                    <div style="text-align: right; float: right">
+                        <button type="submit" name="continueToStep5" class="btn btn-primary">Next Step</button>
+                    </div>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
