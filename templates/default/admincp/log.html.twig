@@ -1,0 +1,317 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Options #}
+{%  set menu = 2 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function() {
+            // Support for AJAX loaded modal window.
+            // Focuses on first input text box after it loads the window
+            $('[data-type="modal"]').click(function(e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $(url).modal('open');
+                } else {
+                    $.get(url, function(data) {
+                        $('<div class="modal hide fade">' + data + '</div>').modal();
+                    }).success(function() {
+//                                $('input:text:visible:first').focus();
+                            }
+                    );
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+        <div class="widget">
+            <div class="widget-header"> <i class="icon-list-alt"></i>
+                {% if settings.type == 'proxy' %}
+                    <h3> Proxy/VPN Log</h3>
+                {% elseif settings.type == 'spammer' %}
+                    <h3> Spammer Log</h3>
+                {% elseif settings.type == 'mass_requests' %}
+                    <h3> Mass requests/DDos Log</h3>
+                {% elseif settings.type == 'sql_injection' %}
+                    <h3> SQL Injections Log</h3>
+                {% elseif settings.type == 'xss_attack' %}
+                    <h3> XSS Attacks Log</h3>
+                {% endif %}
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content page-tables">
+                {% if logs != FALSE %}
+                    <table class="table table-striped table-bordered data-table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>IP</th>
+                            {#<th> Query</th>#}
+                            <th>Operating System</th>
+                            <th>Browser</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for log in logs %}
+                            {% set custom_data = log.custom_data|unserialize %}
+                            <tr>
+                                <td> {{ log.created_on }} </td>
+                                <td> {{ log.type }} </td>
+                                <td> {{ log.ip }} </td>
+                                {#<td> {{ log.query }} </td>#}
+                                <td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/os/{{ custom_data.personal.OS.code }}.png"> {{ custom_data.personal.OS.name }} </td>
+                                <td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/browsers/{{ custom_data.personal.browser.code }}.png"> {{ custom_data.personal.browser.name }} </td>
+                                <td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/flags/{{ custom_data.personal.location.code }}.png"> {{ custom_data.personal.location.name }} </td>
+                                <td>
+                                    {% if settings.type == 'mass_requests' and data.fetch_log.detail != 'full' %}
+                                        <a href="log.php?type={{ settings.type }}&details={{ log.id }}" data-type="modal" data-toggle="tooltip" title="Show details"><span class="icon icon-color icon-list-alt"></span></a>
+                                        <a href="log.php?type={{ settings.type }}&detail=full&ip={{ log.ip }}" data-toggle="tooltip" title="Show full log for this ip"><span class="icon icon-color icon-tasks"></span></a>
+                                    {% elseif settings.type == 'mass_requests' and data.fetch_log.detail == 'full' %}
+                                        <a href="log.php?type={{ settings.type }}&details={{ log.id }}&detail=full&ip={{ log.ip }}" data-type="modal" data-toggle="tooltip" title="Show details"><span class="icon icon-color icon-list-alt"></span></a>
+                                    {% else %}
+                                        <a href="log.php?type={{ settings.type }}&details={{ log.id }}" data-type="modal" data-toggle="tooltip" title="Show details"><span class="icon icon-color icon-list-alt"></span></a>
+                                    {% endif %}
+                                    <a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {#{% if settings.type == 'proxys' %}#}
+                        {#<table class="table table-striped table-bordered">#}
+                            {#<thead>#}
+                            {#<tr>#}
+                                {#<th> Date </th>#}
+                                {#<th> User Agent</th>#}
+                                {#<th> IP</th>#}
+                                {#<th> Actions</th>#}
+                            {#</tr>#}
+                            {#</thead>#}
+                            {#<tbody>#}
+                            {#{% for log in logs %}#}
+                                {#<tr>#}
+                                    {#<td> {{ log.created_on }} </td>#}
+                                    {#<td> {{ log.user_agent }} </td>#}
+                                    {#<td> {{ log.ip }} </td>#}
+                                    {#<td>#}
+                                        {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>#}
+                                    {#</td>#}
+                                {#</tr>#}
+                            {#{% endfor %}#}
+                            {#</tbody>#}
+                        {#</table>#}
+                    {#{% elseif settings.type == 'spammers' %}#}
+                        {#<table class="table table-striped table-bordered">#}
+                            {#<thead>#}
+                            {#<tr>#}
+                                {#<th> Date </th>#}
+                                {#<th> User Agent</th>#}
+                                {#<th> IP</th>#}
+                                {#<th> Actions</th>#}
+                            {#</tr>#}
+                            {#</thead>#}
+                            {#<tbody>#}
+                            {#{% for log in logs %}#}
+                                {#<tr>#}
+                                    {#<td> {{ log.created_on }} </td>#}
+                                    {#<td> {{ log.user_agent }} </td>#}
+                                    {#<td> {{ log.ip }} </td>#}
+                                    {#<td>#}
+                                        {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>#}
+                                    {#</td>#}
+                                {#</tr>#}
+                            {#{% endfor %}#}
+                            {#</tbody>#}
+                        {#</table>#}
+                    {#{% elseif settings.type == 'mass_requests' %}#}
+                        {#&#123;&#35; Display the full log for the selected ip adress &#35;&#125;#}
+                        {#{% if settings.detail == 'full' %}#}
+                            {#<table class="table table-striped table-bordered">#}
+                                {#<thead>#}
+                                {#<tr>#}
+                                    {#<th> Date </th>#}
+                                    {#<th> IP</th>#}
+                                    {#<th> User Agent</th>#}
+                                    {#<th> Requests</th>#}
+                                    {#<th> Actions</th>#}
+                                {#</tr>#}
+                                {#</thead>#}
+                                {#<tbody>#}
+                                {#{% for log in logs %}#}
+                                    {#<tr>#}
+                                        {#<td> {{ log.created_on }} </td>#}
+                                        {#<td> {{ log.ip }} </td>#}
+                                        {#<td> {{ log.user_agent }} </td>#}
+                                        {#<td> {{ log.requests }} </td>#}
+                                        {#<td>#}
+                                            {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}&detail=full&ip={{ log.ip }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>                                        </td>#}
+                                    {#</tr>#}
+                                {#{% endfor %}#}
+                                {#</tbody>#}
+                            {#</table>#}
+                        {#&#123;&#35; Display the log with all ip adresses &#35;&#125;#}
+                        {#{% else %}#}
+                            {#<table class="table table-striped table-bordered">#}
+                                {#<thead>#}
+                                {#<tr>#}
+                                    {#<th> Date </th>#}
+                                    {#<th> IP</th>#}
+                                    {#<th> User Agent</th>#}
+                                    {#<th> Requests</th>#}
+                                    {#<th> Actions</th>#}
+                                {#</tr>#}
+                                {#</thead>#}
+                                {#<tbody>#}
+                                    {#{% for log in logs %}#}
+                                        {#<tr>#}
+                                            {#<td> {{ log.created_on }} </td>#}
+                                            {#<td> {{ log.ip }} </td>#}
+                                            {#<td> {{ log.user_agent }} </td>#}
+                                            {#<td> {{ log.requests }} </td>#}
+                                            {#<td>#}
+                                                {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>#}
+                                                {#<a href="log.php?type={{ settings.type }}&detail=full&ip={{ log.ip }}" data-toggle="tooltip" title="Full log for this IP"><span class="icon icon-color icon-list-alt"></span></a>#}
+                                            {#</td>#}
+                                        {#</tr>#}
+                                    {#{% endfor %}#}
+                                {#</tbody>#}
+                            {#</table>#}
+                        {#{% endif %}#}
+                    {#{% elseif settings.type == 'sql_injection' %}#}
+                        {#<table class="table table-striped table-bordered data-table">#}
+                            {#<thead>#}
+                            {#<tr>#}
+                                {#<th>Date</th>#}
+                                {#<th>Type</th>#}
+                                {#<th>IP</th>#}
+                                {#&#123;&#35;<th> Query</th>&#35;&#125;#}
+                                {#<th>Operating System</th>#}
+                                {#<th>Browser</th>#}
+                                {#<th>Location</th>#}
+                                {#<th>Actions</th>#}
+                            {#</tr>#}
+                            {#</thead>#}
+                            {#<tbody>#}
+                            {#{% for log in logs %}#}
+                                {#{% set custom_data = log.custom_data|unserialize %}#}
+                                {#<tr>#}
+                                    {#<td> {{ log.created_on }} </td>#}
+                                    {#<td> {{ log.type }} </td>#}
+                                    {#<td> {{ log.ip }} </td>#}
+                                    {#&#123;&#35;<td> {{ log.query }} </td>&#35;&#125;#}
+                                    {#<td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/os/{{ custom_data.personal.OS.code }}.png"> {{ custom_data.personal.OS.name }} </td>#}
+                                    {#<td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/browsers/{{ custom_data.personal.browser.code }}.png"> {{ custom_data.personal.browser.name }} </td>#}
+                                    {#<td> <img data-cdn-src="../templates/{{ template_name }}/includes/data/img/flags/{{ custom_data.personal.location.code }}.png"> {{ custom_data.personal.location.name }} </td>#}
+                                    {#<td>#}
+                                        {#<a href="log.php?type={{ settings.type }}&details={{ log.id }}" data-type="modal" data-toggle="tooltip" title="Show details"><span class="icon icon-color icon-list-alt"></span></a>#}
+                                        {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>#}
+
+                                    {#</td>#}
+                                {#</tr>#}
+                            {#{% endfor %}#}
+                            {#</tbody>#}
+                        {#</table>#}
+                    {#{% elseif settings.type == 'xss_attacks' %}#}
+                        {#<table class="table table-striped table-bordered">#}
+                            {#<thead>#}
+                            {#<tr>#}
+                                {#<th> Date </th>#}
+                                {#<th> User Agent</th>#}
+                                {#<th> IP</th>#}
+                                {#<th> Actions</th>#}
+                            {#</tr>#}
+                            {#</thead>#}
+                            {#<tbody>#}
+                            {#{% for log in logs %}#}
+                                {#<tr>#}
+                                    {#<td> {{ log.created_on }} </td>#}
+                                    {#<td> {{ log.user_agent }} </td>#}
+                                    {#<td> {{ log.ip }} </td>#}
+                                    {#<td>#}
+                                        {#<a href="log.php?type={{ settings.type }}&delete={{ log.id }}" data-toggle="tooltip" title="Delete this entry from the log"><span class="icon icon-color icon-remove"></span></a>#}
+                                    {#</td>#}
+                                {#</tr>#}
+                            {#{% endfor %}#}
+                            {#</tbody>#}
+                        {#</table>#}
+                    {#{% endif %}#}
+                {% else %}
+                    <div class="alert alert-success">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <strong>Look's good!</strong> There is nothing to worry about. The logs for the selected type are empty.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

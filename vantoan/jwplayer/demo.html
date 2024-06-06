@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	​<script type="text/javascript" src="jwplayer.js"></script>
+	<script type="text/javascript">jwplayer.key="ruFSYlSYxjskn0jYnCBjL4uDRGTX0wnKaih8OQ==";</script>
+</head>
+<body>
+	<div id="myElement">Loading the player...</div>
+	<script type="text/javascript">
+	var playerInstance = jwplayer("myElement");
+	playerInstance.setup({
+	    image: "http://content.jwplatform.com/thumbs/C4lp6Dtd-640.jpg",
+	    width: 640,
+	    height: 360,
+	    type: 'hls',
+	    primary: 'flash',
+	    file: 'http://wowza.jwplayer.com:1935/live/jelly.stream/playlist.m3u8',
+	    title: 'Tiêu đề',
+	    description: 'Giới thiệu video ...',
+	});
+	</script>
+</body>
+</html>

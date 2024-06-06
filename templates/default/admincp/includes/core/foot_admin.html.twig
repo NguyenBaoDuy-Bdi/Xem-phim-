@@ -1,0 +1,52 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+<div id="footer">
+    <div class="footer-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    &copy; 2014 - 2015 SafeGuard Pro powered by  <a href="https://gewora.net" target="_blank">Gewora.net</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../templates/{{ template_name }}/includes/data/js/jquery-1.7.2.min.js"></script>
+<script src="../templates/{{ template_name }}/includes/data/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../templates/{{ template_name }}/includes/data/js/bootstrap.js"></script>
+<script src="../templates/{{ template_name }}/includes/data/js/bootstrap-switch.min.js"></script>
+<script src="../templates/{{ template_name }}/includes/data/js/base.js"></script>
+<script src="../templates/{{ template_name }}/includes/data/js/jquery.dataTables.min.js"></script>
+<script>
+    <!-- Tooltips -->
+    $('#element').tooltip('show')
+
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+        $('input[type="checkbox"],[type="radio"]').not('#create-switch').bootstrapSwitch();
+        $('input[type="checkbox"],[type="radio"]').bootstrapSwitch('setSizeClass', 'switch-small');
+    });
+</script><!-- /Calendar -->

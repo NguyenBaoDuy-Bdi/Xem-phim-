@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Minh Khang Firewall Admin Panel"
+AuthUserFile /YOUR_FULL_UNIX_PATH_HERE/firewall_admin/.htpasswd
+Require valid-user

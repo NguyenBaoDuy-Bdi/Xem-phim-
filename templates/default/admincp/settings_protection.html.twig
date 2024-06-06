@@ -1,0 +1,314 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+{# Options #}
+{%  set menu = 3 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+
+{# The content #}
+{% block content %}
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+    </div>
+
+    <form class="form-horizontal" action="settings_protection.php" method="post">
+        <div class="span7">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-list-alt"></i>
+                    <h3> Protection</h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#proxy" data-toggle="tab">Proxy VPN</a></li>
+                            <li><a href="#spammer" data-toggle="tab">Spammer & Search Engines</a></li>
+                            <li><a href="#mass_request" data-toggle="tab">Mass requests</a></li>
+                            <li><a href="#sql_injection" data-toggle="tab">SQL injection</a></li>
+                            <li><a href="#xss_attack" data-toggle="tab">XSS attack</a></li>
+                            <li><a href="#banned" data-toggle="tab">Banned access</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="proxy">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_proxies" value="{{ config.redirect_proxies }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Auto Ban for</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="auto_ban_ip_proxies" value="{{ config.auto_ban_ip_proxies }}">
+                                            <span>&nbsp;Minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label"> Enable protection</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="protection_proxies" value="0">
+                                                <input type="checkbox" name="protection_proxies" value="1" {% if config.protection_proxies == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label"> Enable logging</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="log_proxies" value="0">
+                                                <input type="checkbox" name="log_proxies" value="1" {% if config.log_proxies == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="spammer">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_spammers" value="{{ config.redirect_spammers }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Auto Ban for</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="auto_ban_ip_spammers" value="{{ config.auto_ban_ip_spammers }}">
+                                            <span>&nbsp;Minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Block search engines</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="block_search_engines" value="0">
+                                                <input type="checkbox" name="block_search_engines" value="1" {% if config.block_search_engines == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable protection</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="protection_spammers" value="0">
+                                                <input type="checkbox" name="protection_spammers" value="1" {% if config.protection_spammers == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable logging</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="log_spammers" value="0">
+                                                <input type="checkbox" name="log_spammers" value="1" {% if config.log_spammers == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="mass_request">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Maximum requests per second</label>
+                                        <div class="controls">
+                                            <input type="number" class="span2" name="mass_requests_limit" value="{{ config.mass_requests_limit }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_mass_requests" value="{{ config.redirect_mass_requests }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Auto Ban for</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="auto_ban_ip_mass_requests" value="{{ config.auto_ban_ip_mass_requests }}">
+                                            <span>&nbsp;Minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable protection</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="protection_mass_requests" value="0">
+                                                <input type="checkbox" name="protection_mass_requests" value="1" {% if config.protection_mass_requests == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable logging</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="log_mass_requests" value="0">
+                                                <input type="checkbox" name="log_mass_requests" value="1" {% if config.log_mass_requests == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="sql_injection">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_sql_injections" value="{{ config.redirect_sql_injections }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Auto Ban for</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="auto_ban_ip_sql_injections" value="{{ config.auto_ban_ip_sql_injections }}">
+                                            <span>&nbsp;Minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable protection</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="protection_sql_injections" value="0">
+                                                <input type="checkbox" name="protection_sql_injections" value="1" {% if config.protection_sql_injections == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable logging</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="log_sql_injections" value="0">
+                                                <input type="checkbox" name="log_sql_injections" value="1" {% if config.log_sql_injections == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="xss_attack">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_xss_attacks" value="{{ config.redirect_xss_attacks }}">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Auto Ban for</label>
+                                        <div class="controls">
+                                            <input type="number" class="span1" name="auto_ban_ip_xss_attacks" value="{{ config.auto_ban_ip_xss_attacks }}">
+                                            <span>&nbsp;Minutes</span>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable protection</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="protection_xss_attacks" value="0">
+                                                <input type="checkbox" name="protection_xss_attacks" value="1" {% if config.protection_xss_attacks == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Enable logging</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="log_xss_attacks" value="0">
+                                                <input type="checkbox" name="log_xss_attacks" value="1" {% if config.log_xss_attacks == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane" id="banned">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Redirection URL</label>
+                                        <div class="controls">
+                                            <input type="text" class="span5" name="redirect_banned" value="{{ config.redirect_banned }}">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="span5">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-list-alt"></i>
+                    <h3> Additional Features</h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#cloudflare" data-toggle="tab">Cloudflare</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="cloudflare">
+                                {% if application_config.cloudflare_api_key == '' or application_config.cloudflare_email == '' %}
+                                    <div class=" alert alert-warning">
+                                        <i class="icon-warning-sign"></i>
+                                        <strong>Warning!</strong> You have not configured your CloudFlare account at the <a href="settings_accounts.php"><strong>accounts settings.</strong></a> You have to do this before you can edit the settings below.
+                                    </div>
+                                {% endif %}
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label">Sync Auto-Bans</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="auto_ban_sync_with_cloudflare" value="0">
+                                                <input type="checkbox" name="auto_ban_sync_with_cloudflare" value="1" {% if application_config.cloudflare_api_key == '' or application_config.cloudflare_email == '' %}disabled {% endif %} {% if config.auto_ban_sync_with_cloudflare == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Sync Bans</label>
+                                        <div class="controls">
+                                            <label class="checkbox inline">
+                                                <input type="hidden" name="ban_ip_sync_with_cloudflare" value="0">
+                                                <input type="checkbox" name="ban_ip_sync_with_cloudflare" value="1" {% if application_config.cloudflare_api_key == '' or application_config.cloudflare_email == '' %}disabled {% endif %} {% if config.ban_ip_sync_with_cloudflare == 1 %}checked{% endif %}>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="span12">
+            <div class="form-actions well-large">
+                <input type="hidden" name="update">
+                <button type="submit" class="btn btn-primary">Save settings</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

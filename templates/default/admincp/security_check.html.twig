@@ -1,0 +1,208 @@
+{#/*======================================================================
+|| #################################################################### ||
+|| #                This file is part of SafeGuard Pro                # ||
+|| # ---------------------------------------------------------------- # ||
+|| #     Copyright © 2014 - 2015 Gewora.net. All Rights Reserved.     # ||
+|| # This file may not be redistributed in whole or significant part  # ||
+|| #                                                                  # ||
+|| #            For more license information contact Gewora           # ||
+|| #            and/or read the envato license details at:            # ||
+|| #                  http://codecanyon.net/licenses                  # ||
+|| # You are NOT allowed to modify/remove this copyright information  # ||
+|| #                                                                  # ||
+|| #              Any infringement of this copyright will             # ||
+|| #               result in legal action by the holder               # ||
+|| #                                                                  # ||
+|| # ----------     SafeGuard Pro IS NOT FREE SOFTWARE     ---------- # ||
+|| # -------------------- http://www.gewora.net --------------------- # ||
+|| #################################################################### ||
+\*======================================================================*/#}
+
+{# Options #}
+{%  set menu = 6 %}
+
+{# Extend the base template#}
+{% extends 'base_admin.html.twig' %}
+
+{# The content #}
+{% block content %}
+
+    <div class="span12">
+        {% if msg %}
+            {{ msg.display }}
+        {%  endif %}
+    </div>
+
+    <div class="span12">
+        <div class="widget">
+            <div class="widget-header"> <i class="icon-info-sign"></i>
+                <h3> PHP Security Check</h3>
+            </div>
+            <div class="widget-content">
+                <table class="table table-striped table-bordered span6">
+                    <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td data-toggle="tooltip" title="Some developers rely on this feature to 'prevent' injection based attacks. This is a major vulnerable.">magic_quotes_gpc</td>
+                        <td>
+                            {% if params.magic_quotes_gpc == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-toggle="tooltip" title="Some developers rely on this feature to 'prevent' injection based attacks. This is a major vulnerable.">magic_quotes_runtime</td>
+                        <td>
+                            {% if params.magic_quotes_runtime == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-toggle="tooltip" title="Some developers rely on this feature to 'prevent' injection based attacks. This is a major vulnerable.">magic_quotes_sybase</td>
+                        <td>
+                            {% if params.magic_quotes_sybase == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-striped table-bordered span5">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-toggle="tooltip" title="Adds your PHP version to the response headers. This could be used for security exploits.">expose_php</td>
+                            <td>
+                                {% if params.expose_php == TRUE %}
+                                    <span class="label label-warning">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-toggle="tooltip" title="Shows PHP errors to the client. This could be used for security exploits.">display_errors</td>
+                            <td>
+                                {% if params.display_errors == TRUE %}
+                                    <span class="label label-important">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-toggle="tooltip" title="Shows PHP startup  sequence errors to the client. This could be used for security exploits.">display_startup_errors</td>
+                            <td>
+                                {% if params.display_startup_errors == TRUE %}
+                                    <span class="label label-important">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-striped table-bordered span6">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-toggle="tooltip" title="Allows attackers to take over bad coded applications with ease">register_globals</td>
+                            <td>
+                                {% if params.register_globals == TRUE %}
+                                    <span class="label label-important">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-toggle="tooltip" title="File inclusion vulnerability">allow_url_fopen</td>
+                            <td>
+                                {% if params.allow_url_fopen == TRUE %}
+                                    <span class="label label-important">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-toggle="tooltip" title="File inclusion vulnerability">allow_url_include</td>
+                            <td>
+                                {% if params.allow_url_include == TRUE %}
+                                    <span class="label label-important">On</span>
+                                {% else %}
+                                    <span class="label label-success">Off</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-striped table-bordered span5">
+                    <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td data-toggle="tooltip" title="Allows attackers to execute commands on your server">exec</td>
+                        <td>
+                            {% if params.exec == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-toggle="tooltip" title="Allows attackers to execute commands on your server">shell_exec</td>
+                        <td>
+                            {% if params.shell_exec == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-toggle="tooltip" title="Allows attackers to execute commands on your server">proc_open</td>
+                        <td>
+                            {% if params.proc_open == TRUE %}
+                                <span class="label label-important">On</span>
+                            {% else %}
+                                <span class="label label-success">Off</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
